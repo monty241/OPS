@@ -106,6 +106,8 @@ real,      INTENT(OUT)                           :: koh
 real,      INTENT(OUT)                           :: croutpri                   ! constant (initial) in-cloud scavenging ratio [-] for primary component
 real,      INTENT(OUT)                           :: somcsec
 real,      INTENT(OUT)                           :: ar
+real,      INTENT(OUT)                           :: rno2nox
+real,      INTENT(OUT)                           :: ecvl(NSTAB, NTRAJ, *)
 CHARACTER*(*), INTENT(OUT)                       :: nam_subsec(nsubsec)
 type(TbuildingEffect), INTENT(OUT)               :: buildingEffect             ! structure with building effect tables
 TYPE (TError), INTENT(OUT)                       :: error                      ! error handling record
