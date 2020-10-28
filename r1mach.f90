@@ -4,7 +4,7 @@ real function r1mach( k )
 ! Gerard Cats, 25 August 2020
 
 implicit none
-real t  
+real t
 real r(4)
 save r
 data r /0,0,0,0/

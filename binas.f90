@@ -28,9 +28,9 @@ module Binas
   ! !AUTHORS:
   ! !AFFILIATION:  KNMI
   ! !DATE:         \today
-  !
+
   ! !INTRODUCTION: Introduction
-  !
+
   !   'BINAS' is the name an in The Netherlands common used table-book
   !   with scientific constants and formulae.
 

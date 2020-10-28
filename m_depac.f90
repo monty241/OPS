@@ -53,9 +53,9 @@
 !       |     Rinc    |     |            !     |       Rinc         |            !        Rc
 !       |      |      |     | F          !     |        |           |            !         |
 !       Rw   Rsoil   Rstom  |            !    Rw       Rsoil       Rstom         !     --------- Ccomp_tot
-!       |      |      |     |            !     |        |           |            !
-!       |      |      |     V            !--- Cw ---- Csoil ---- Cstom     !
-!   zs ---------------------------- C=0  !
+!       |      |      |     |            !     |        |           |
+!       |      |      |     V            !--- Cw ---- Csoil ---- Cstom
+!   zs ---------------------------- C=0
 !
 !   zr       : reference height (m)
 !   z0       : roughness length (m)
@@ -80,7 +80,7 @@
 !   H        : layer height of numerical model
 !
 !    A. classical approach             !  B and C. compensation points
-!                                      !
+!
 !  1     1         1          1        !  1     1         1          1
 ! -- = ---- + ----------- + -----      ! -- = ---- + ----------- + -----
 ! Rc     Rw    Rsoil_eff    Rstom      ! Rc    Rw    Rsoil_eff    Rstom
@@ -90,23 +90,23 @@
 !
 !                                      ! Separate fluxes over external leaf, soil and stomata (B) equal total flux
 !                                      ! between Cc and Ccomp_tot (C):
-!                                      !
+!
 !                                      !  (Cc - Cw  )    (Cc - Csoil)    (Cc - Cstom)   (Cc - Ccomp_tot)
 !                                      !  ------------ + ------------ +  ------------ = ----------------  <=> (Cc-terms cancel)
 !                                      !     Rw         Rsoil_eff         Rstom             Rc
-!                                      !
+!
 !                                      !  1                1              1              1
 !                                      ! --- Ccomp_tot = ---- Cw + --------- Csoil + ----- Cstom.
 !                                      !  Rc             Rw        Rsoil_eff         Rstom
-!                                      !
+!
 ! F = -vd*Catm                         ! F = -ve*[Catm - Ccomp_tot]
-!                                      !
+!
 ! Mass balance:                        ! Mass balance:
-!                                      !
+!
 !   dCatm                              !   dCatm
 ! H ----- = F = -vd*Catm,              ! H ----- = F = -ve*[Catm - Ccomp_tot],
 !    dt                                !    dt
-!                                      !
+!
 ! with solution:                       ! with solution (assuming Ccomp_tot constant):
 !
 ! Catm(t+dt) = Catm(t)*exp(-(vd/H)*dt) ! Catm(t+dt) = Ccomp_tot + [Catm(t) - Ccomp_tot]*exp(-(ve/H)*dt)

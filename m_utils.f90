@@ -304,7 +304,7 @@ SUBROUTINE allocreal0(dim, arr, error)
 INTEGER*4, INTENT(IN)                            :: dim
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
-REAL*4,    INTENT(OUT), DIMENSION(:), POINTER    :: arr
+real,      INTENT(OUT), DIMENSION(:), POINTER    :: arr
 TYPE (TError), INTENT(OUT)                       :: error                      ! Error handling record
 
 ! CONSTANTS
@@ -327,10 +327,10 @@ SUBROUTINE allocreal(dim, defvalue, arr, error)
 
 ! SUBROUTINE ARGUMENTS - INPUT
 INTEGER*4, INTENT(IN)                            :: dim
-REAL*4,    INTENT(IN)                            :: defvalue
+real,      INTENT(IN)                            :: defvalue
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
-REAL*4,    INTENT(OUT), DIMENSION(:), POINTER    :: arr
+real,      INTENT(OUT), DIMENSION(:), POINTER    :: arr
 TYPE (TError), INTENT(OUT)                       :: error                      ! Error handling record
 
 ! LOCAL VARIABLES
@@ -389,7 +389,7 @@ SUBROUTINE allocdouble(dim, defvalue, arr, error)
 
 ! SUBROUTINE ARGUMENTS - INPUT
 INTEGER*4, INTENT(IN)                            :: dim
-REAL*4,    INTENT(IN)                            :: defvalue
+real,      INTENT(IN)                            :: defvalue
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
 DOUBLE PRECISION,    INTENT(OUT), DIMENSION(:), POINTER    :: arr
@@ -429,7 +429,7 @@ INTEGER*4, INTENT(IN)                            :: dim1
 INTEGER*4, INTENT(IN)                            :: dim2
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
-REAL*4,    INTENT(OUT), DIMENSION(:,:), POINTER  :: arr
+real,      INTENT(OUT), DIMENSION(:,:), POINTER  :: arr
 TYPE (TError), INTENT(OUT)                       :: error                      ! Error handling record
 
 ! LOCAL VARIABLES
@@ -464,7 +464,7 @@ INTEGER*4, INTENT(IN)                            :: dim1
 INTEGER*4, INTENT(IN)                            :: dim2
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
-REAL*4,    INTENT(OUT), DIMENSION(:,:), ALLOCATABLE :: arr
+real,      INTENT(OUT), DIMENSION(:,:), ALLOCATABLE :: arr
 TYPE (TError), INTENT(OUT)                          :: error                      ! Error handling record
 
 ! LOCAL VARIABLES
@@ -537,7 +537,7 @@ INTEGER*4, INTENT(IN)                            :: dim2
 INTEGER*4, INTENT(IN)                            :: dim3
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
-REAL*4,    INTENT(OUT), DIMENSION(:,:,:), POINTER :: arr
+real,      INTENT(OUT), DIMENSION(:,:,:), POINTER :: arr
 TYPE (TError), INTENT(OUT)                       :: error                      ! Error handling record
 
 ! LOCAL VARIABLES
@@ -739,7 +739,7 @@ SUBROUTINE deallocreal(arr)
 !DEC$ ATTRIBUTES DLLEXPORT:: deallocreal
 
 ! SUBROUTINE ARGUMENTS - I/O
-REAL*4,    INTENT(INOUT), DIMENSION(:), POINTER  :: arr
+real,      INTENT(INOUT), DIMENSION(:), POINTER  :: arr
 
 ! CONSTANTS
 CHARACTER*512                                    :: ROUTINENAAM
@@ -778,7 +778,7 @@ SUBROUTINE deallocreal2(arr)
 !DEC$ ATTRIBUTES DLLEXPORT:: deallocreal2
 
 ! SUBROUTINE ARGUMENTS - I/O
-REAL*4,    INTENT(INOUT), DIMENSION(:,:), POINTER :: arr
+real,      INTENT(INOUT), DIMENSION(:,:), POINTER :: arr
 
 ! CONSTANTS
 CHARACTER*512                                    :: ROUTINENAAM
@@ -818,7 +818,7 @@ SUBROUTINE deallocreal3(arr)
 !DEC$ ATTRIBUTES DLLEXPORT:: deallocreal3
 
 ! SUBROUTINE ARGUMENTS - I/O
-REAL*4,    INTENT(INOUT), DIMENSION(:,:,:), POINTER :: arr
+real,      INTENT(INOUT), DIMENSION(:,:,:), POINTER :: arr
 
 ! CONSTANTS
 CHARACTER*512                                    :: ROUTINENAAM
@@ -918,7 +918,7 @@ SUBROUTINE getreal  (string, value, nopart, error)
 CHARACTER*(*), INTENT(IN)                        :: string                     ! String with real number, starting at pos. 1.
 
 ! SUBROUTINE ARGUMENTS - OUTPUT
-REAL*4,    INTENT(OUT)                           :: value
+real,      INTENT(OUT)                           :: value
 LOGICAL,   INTENT(OUT)                           :: nopart                     ! TRUE als er geen real is gelezen
 TYPE (TError), INTENT(OUT)                       :: error                      ! Error handling record
 
@@ -926,7 +926,7 @@ TYPE (TError), INTENT(OUT)                       :: error                      !
 INTEGER*4                                        :: beyondpos                  ! First position beyond integer in string
 INTEGER*4                                        :: morepos                    ! First position beyond integer in substring
 INTEGER*4                                        :: intpart                    ! Extracted integer from string
-REAL*4                                           :: decpart                    ! Extracted decimal part from string
+real                                             :: decpart                    ! Extracted decimal part from string
 LOGICAL                                          :: nodecpart                  ! TRUE als er geen real is gelezen
 LOGICAL                                          :: negative                   ! Of getal negatief is
 CHARACTER                                        :: testchar                   ! Character looked at
@@ -1643,14 +1643,14 @@ INTEGER*4, INTENT(IN)                            :: nobs
 INTEGER*4, INTENT(IN)                            :: column
 
 ! SUBROUTINE ARGUMENTS - I/O
-REAL*4,    INTENT(INOUT)                         :: matrix(:,:)
+real,      INTENT(INOUT)                         :: matrix(:,:)
 
 ! LOCAL VARIABLES
 INTEGER*4                                        :: i
 INTEGER*4                                        :: j
 INTEGER*4                                        :: ctr
 INTEGER*4                                        :: isize
-REAL*4,    ALLOCATABLE                           :: tmp(:)
+real,      ALLOCATABLE                           :: tmp(:)
 
 isize=SIZE(matrix,DIM=1)
 ALLOCATE(tmp(isize))
