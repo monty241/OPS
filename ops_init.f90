@@ -249,7 +249,9 @@ ENDIF
 IF (isec) THEN
   namco      = CNAME(icm,1)
   namsec     = CNAME(icm,2)
-  nam_subsec = CNAME_SUBSEC
+  IF ( nsubsec > 0 ) THEN
+     nam_subsec = CNAME_SUBSEC
+  ENDIF
   namse3     = CNAME(icm,4)
 ELSE
   namsec = namco

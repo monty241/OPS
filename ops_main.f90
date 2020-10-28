@@ -501,7 +501,11 @@ CALL alloc(nrrcp, gym, error)
 CALL alloc(nrrcp, nh3bg_rcp, error)
 CALL alloc(nrrcp, so2bg_rcp, error)								   
 CALL alloc(nrrcp, rhno3_rcp, error)
-CALL alloc(nrrcp, nsubsec, f_subsec_rcp, error)                                              
+IF ( nsubsec > 0 ) THEN
+   CALL alloc(nrrcp, nsubsec, f_subsec_rcp, error)
+ELSE
+   CALL alloc(nrrcp, 1, f_subsec_rcp, error)    ! some dummy allocation
+ENDIF
 
 IF (error%haserror) GOTO 3300 ! GOTO deallocate all arrays and do error handling at end of program.
 !
@@ -685,7 +689,12 @@ CALL alloc(nrrcp, 0., drydep, error)
 CALL alloc(nrrcp, 0., wetdep, error)
 CALL alloc(nrrcp, 0., ddepri, error)
 CALL alloc(nrrcp, 0., totdep, error)
-CALL alloc(nrrcp, nsubsec, csubsec, error); if (nsubsec .gt. 0) csubsec = 0.0
+if (nsubsec .gt. 0) then
+   CALL alloc(nrrcp, nsubsec, csubsec, error)
+   csubsec = 0.0
+else
+   CALL alloc(nrrcp, 1, csubsec, error)        ! dummy allocation
+endif
 
 ! ntodo: number of particle size classes that are relevant for producing output fields
 ! Default value for ntodo (for gas): 
